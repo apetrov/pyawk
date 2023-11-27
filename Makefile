@@ -9,7 +9,7 @@ test/python:
 
 
 test/pyawk:
-	cat input.txt | PYTHONPATH=$$(pwd) python -m pyawk pyawk.py
+	cat input.txt | PYTHONPATH=$$(pwd) python -m pyawk wc_pyawk.py
 
 all: test/awk test/python test/pyawk
 	echo $@
