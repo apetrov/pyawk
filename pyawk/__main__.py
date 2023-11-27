@@ -1,6 +1,7 @@
 import importlib.util
 import argparse
 import sys
+import itertools
 
 def load_module_from_path(path):
     module_name = "mymodule"  # Assign a name to the module
@@ -48,13 +49,17 @@ class Many:
         self.n = n
 
     def run(self, io):
-        pass
+        while True:
+            data = list(itertools.islice(io, self.n))
+            if len(data) == 0:
+                break
+            self.module.many(data)
 
 class Null:
     def run(self, io):
         pass
 
-def create_executor(module, n):
+def create_runner(module, n):
     if hasattr(module, 'one'):
         return One(module)
     if hasattr(module, 'many'):
@@ -64,7 +69,7 @@ def create_executor(module, n):
 def main():
     args = create_args()
     module = load_module_from_path(args.file)
-    executor = create_executor(module, args.number)
+    executor = create_runner(module, args.number)
     runner = Runner(module, executor)
     runner.run(sys.stdin)
     runner.end()
