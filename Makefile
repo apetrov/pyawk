@@ -11,5 +11,5 @@ test/python:
 test/pyawk:
 	cat input.txt | PYTHONPATH=$$(pwd) python -m pyawk pyawk.py
 
-all: test/awk test/python
+all: test/awk test/python test/pyawk
 	echo $@

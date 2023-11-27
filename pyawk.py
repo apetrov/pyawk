@@ -1,8 +1,9 @@
-def begin():
-    print('begin')
+# implicit begin
+acc = 0
 
 def line(x):
-    print('x')
+    global acc
+    acc += len(x.split(' '))
 
 def end():
-    print('end')
+    print(acc)
