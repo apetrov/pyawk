@@ -1,15 +1,17 @@
 
 
 test/awk:
-	cat input.txt | awk -f wc.awk
-
+	cat test/input.txt | awk -f test/wc.awk
 
 test/python:
-	cat input.txt | python wc.py
-
+	cat test/input.txt | python test/wc.py
 
 test/pyawk:
-	cat input.txt | PYTHONPATH=$$(pwd) python -m pyawk wc_pyawk.py
+	cat test/input.txt | PYTHONPATH=$$(pwd) python -m pyawk test/wc_pyawk.py
 
-all: test/awk test/python test/pyawk
+test/all: test/awk test/python test/pyawk
 	echo $@
+
+
+install:
+	pip install .
