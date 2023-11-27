@@ -1,7 +1,7 @@
 # implicit begin
 acc = 0
 
-def line(x):
+def one(x):
     global acc
     acc += len(x.split(' '))
 
