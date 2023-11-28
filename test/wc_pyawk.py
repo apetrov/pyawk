@@ -1,9 +1,9 @@
 # implicit begin
-acc = 0
+from types import SimpleNamespace
+state = SimpleNamespace(acc=0)
 
 def one(x):
-    global acc
-    acc += len(x.split(' '))
+    state.acc += len(x.split(' '))
 
 def end():
-    print(acc)
+    print(state.acc)

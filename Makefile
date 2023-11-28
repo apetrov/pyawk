@@ -12,6 +12,8 @@ test/pyawk:
 test/all: test/awk test/python test/pyawk
 	echo $@
 
+test/sum:
+	seq 1 10000 | PYTHONPATH=$$(pwd) python -m pyawk test/sum.py
 
 install:
 	pip install .
